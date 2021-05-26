@@ -8,7 +8,7 @@ Created on Fri May 14 18:42:54 2021
 import requests
 dic_c=dict()
 origin1="תל אביב"
-api_k='____'
+api_k='__'
 file=open("dests.txt", encoding='utf8')
 
 for line in file:
@@ -31,7 +31,7 @@ for line in file:
     except:
         print("destination problem")
         continue
-    print(response_data)
+    #print(response_data)
     ##########################
     km=d_f_telaviv.find('km')
     if km<1:
@@ -41,11 +41,11 @@ for line in file:
     
     time=response_data['rows'][0]['elements'][0]['duration']['value']
     time1=time
-    print(time)
+    #print(time)
     hours=int(time/(3600))
     #min=time%60
     mins=round((time-3600*hours)/60)
-    print(hours, mins)
+    #print(hours, mins)
     if hours>=1:
         time1=str(hours)+" hours "+str(mins)+" mins" 
     else:
@@ -70,7 +70,7 @@ for line in file:
         
     tp=('distance from Tel Aviv: '+d_f_telaviv, 'time: '+time1, 'longitude: '+str(longitude), 'latitude: '+str(latitude))
     dic_c[destination2]=tp
-print(dic_c)
+#print(dic_c)
 
 for destination in dic_c:
     print("destination:", destination)
@@ -85,7 +85,7 @@ for destination in dic_c:
     d=dic_c[destination][0].split()
     distance=float(d[4].replace(",",""))
     dic_distance[destination]=distance
-print(dic_distance)    
+#print(dic_distance)    
 lst=sorted([(distance,destination)for destination,distance in dic_distance.items() ] ,reverse=True)
 print( "הערים הכי רחוקות")
 for distance,destination in lst[:3]:
